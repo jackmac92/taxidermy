@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Header, Modal } from 'semantic-ui-react'
-import CompanyAutosuggest from './components/companyAutosuggest'
+import CompanyAutosuggest from './CompanyAutosuggest'
 
 export default function({ activeCategories = [] }) {
   return (

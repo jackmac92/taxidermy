@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import vis from 'vis-network';
 import { Store } from './Store'
-import CompanySelectModal from './companySelectModal'
+import CompanySelectModal from './components/CompanySelectModal.js'
 
 const App = () => {
   const { state } = React.useContext(Store)
