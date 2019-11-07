@@ -1,6 +1,6 @@
-import React from 'react'
-import { Button, Header, Modal } from 'semantic-ui-react'
-import CompanyAutosuggest from './CompanyAutosuggest'
+import React from 'react';
+import { Button, Header, Modal } from 'semantic-ui-react';
+import CompanyAutosuggest from './CompanyAutosuggest';
 
 export default function({ activeCategories = [] }) {
   return (
@@ -15,5 +15,5 @@ export default function({ activeCategories = [] }) {
         <CompanyAutosuggest />
       </Modal.Content>
     </Modal>
-  )
+  );
 }
