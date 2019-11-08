@@ -35,8 +35,10 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
       callback(null);
     }
 
+    const isShowingHeirarchyView = document.location.search.includes('topdown')
+
     const hierarchical= {
-      enabled: document.location.search.includes('topdown')
+      enabled: isShowingHeirarchyView
     }
 
     const options = {
@@ -105,7 +107,7 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
       },
       edges: {
         width: 3,
-        length: 2000,
+        length: isShowingHeirarchyView ? 600 : 2000,
         color: {
           color: '#c2bfbf',
           highlight: '#d772ad',
