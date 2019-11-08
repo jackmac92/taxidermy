@@ -1,35 +1,71 @@
 #industry-network {
+  background: #FFF;
   position: relative;
   margin: 0 auto 1rem;
   border: 2px solid #D8D8D8;
   border-radius: 4px;
-  height: 500px;
+  height: 650px;
 }
 
 .vis-manipulation {
+  background: #f1f5f7;
+  border-bottom: 1px solid #D8D8D8;
+  padding: .25rem;
   width: 100%;
   position: absolute;
-  left: -5px;
-  top: 5px;
+  left: 0;
+  top: 0;
   display: flex !important;
-  justify-content: flex-end;
+  justify-content: flex-start;
 }
 
-.vis-manipulation > div {
-  display: inline-block;
-}
+  .vis-manipulation > div {
+    display: inline-block;
+  }
 
-.vis-manipulation .vis-button {
-  color: #CCC;
-  background: #222;
-  padding: .5rem 1rem;
-  border-radius: 2px;
-  font-weight: bold;
-}
+  .vis-manipulation .vis-button {
+    color: #FFF;
+    background: #006699;
+    padding: .3rem 1rem;
+    margin: 0 .25rem 0 0;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: .75rem;
+  }
 
-.vis-manipulation .vis-separator-line {
-  margin: 0 1px;
+  .vis-manipulation .vis-separator-line {
+    display: none !important;
+    margin: 0 1px;
+  }
+
+.vis-edit-mode {
+  top: 0;
 }
+  .vis-edit-mode .vis-button {
+    top: 0;
+  }
+
+.vis-close {
+  position: absolute;
+  top: .45rem;
+  right: .45rem;
+  width: 20px;
+  height: 20px;
+}
+  .vis-close:hover {
+    cursor: pointer;
+    color: #006699;
+  }
+  .vis-close::before {
+    display: inline-block;
+    font-family: "FontAwesome"; 
+    content: "\f00d";
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    font-size: 1.5rem;
+    -webkit-font-smoothing: antialiased;
+  }
 
 #operation {
   font-size: 28px;

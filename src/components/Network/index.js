@@ -112,6 +112,15 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
           }
           setIsEditing(true);
         },
+        deleteNode(data, callback) {
+          // filling in the popup DOM elements
+          setCurrentOperation('delete Node');
+          setIdInput(data.id);
+          setLabelInput(data.label);
+          console.log(data);
+          dispatch(deleteNode({edgeId: data.edges[0], nodeId: data.nodes[0]}));
+          callback(data)
+        },
         editNode(data, callback) {
           // filling in the popup DOM elements
           setCurrentOperation('Edit Node');
@@ -131,7 +140,13 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
         addEdge(data, callback) {
           callback(data);
           dispatch(addEdge({fromNode: data.from, toNode: data.to}));
+        },
+        deleteEdge(data, callback) {
+          callback(data);
+          console.log(data);
+          dispatch(deleteNode({edgeId: data.edges[0], nodeId: data.nodes[0]}));
         }
+
       },
       nodes: {
         shape: 'dot',
@@ -187,7 +202,7 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
   network !== null && network.redraw();
   return (
     <>
-      <span>{currentOperation}</span> <br />
+      <span>{currentOperation}</span>
       <div id="network-popUp" style={{ display: isEditing ? 'block' : 'none' }}>
         <div style={{ margin: 'auto', paddingBottom: '20px', display: isEditing ? 'block' : 'none' }}>
           <h3>Enter a new Industry</h3>

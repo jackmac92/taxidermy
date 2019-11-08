@@ -115,7 +115,10 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         nodes: remove(state.nodes, function(node) {
-          return !(node.id === action.id && node.label === action.lable);
+          return !(node.id === action.nodeId);
+        }),
+        edges: remove(state.edges, function(edge) {
+          return !(edge.id === action.edgeId);
         })
       }
     case DELETE_EDGE:
