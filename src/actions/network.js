@@ -39,11 +39,11 @@ export const addEdge = ({fromNode, toNode}) => {
   };
 };
 
-export const deleteNode = ({id, label}) => {
+export const deleteNode = ({edgeId, nodeId}) => {
   return {
     type: DELETE_NODE,
-    id,
-    label
+    edgeId,
+    nodeId
   };
 };
 

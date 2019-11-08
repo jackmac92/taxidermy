@@ -112,6 +112,15 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
           }
           setIsEditing(true);
         },
+        deleteNode(data, callback) {
+          // filling in the popup DOM elements
+          setCurrentOperation('delete Node');
+          setIdInput(data.id);
+          setLabelInput(data.label);
+          console.log(data);
+          dispatch(deleteNode({edgeId: data.edges[0], nodeId: data.nodes[0]}));
+          callback(data)
+        },
         editNode(data, callback) {
           // filling in the popup DOM elements
           setCurrentOperation('Edit Node');
