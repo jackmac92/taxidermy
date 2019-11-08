@@ -22,7 +22,7 @@ function reducer(state = initialState, action) {
     case TOGGLE_MODAL:
       return {
         ...state,
-        modal: {open: !state.modal.open, activeCategory: action.activeCategory, activeCategoryId: action.id}
+        modal: {open: !state.modal.open, activeCategory: action.activeCategory, activeCategoryId: action.activeCategoryId}
       }
     default:
       return state
