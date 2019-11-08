@@ -174,7 +174,8 @@ const Network = () => {
     <>
       <span>{currentOperation}</span> <br />
       <div id="network-popUp" style={{ display: isEditing ? 'block' : 'none' }}>
-        <div style={{ margin: 'auto', display: isEditing ? 'block' : 'none' }}>
+        <div style={{ margin: 'auto', paddingBottom: '20px', display: isEditing ? 'block' : 'none' }}>
+          <h3>Enter a new Industry</h3>
           <input
             id="node-id"
             value={idInput}
