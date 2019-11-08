@@ -101,8 +101,9 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
       edges: {
         width: 3,
         length: 2000,
-        smooth: {
-          enabled: true,
+        color: {
+          color: '#c2bfbf',
+          highlight: '#d772ad',
         }
       },
       groups: {
@@ -124,17 +125,10 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
             border: '#00986b'
           }
         },
-        icons: {
-          shape: 'icon',
-          icon: {
-            face: 'FontAwesome',
-            code: '\uf275',
-            size: 100,
-            color: 'orange'
-          }
-        },
-        source: {
-          color:{ border:'white' }
+      },
+      physics: {
+        repulsion: {
+          nodeDistance: 50
         }
       }
     };
