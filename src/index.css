@@ -13,6 +13,10 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   font-weight: normal;
 }
 
+body {
+  background: #1b1c1d;
+}
+
 ol, ul {
   list-style: none;
 }
@@ -23,5 +27,5 @@ img {
 }
 
 #site-id {
-  margin-top: 1rem;
+  margin: 1.5rem;
 }

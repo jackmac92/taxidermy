@@ -202,7 +202,7 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
   network !== null && network.redraw();
   return (
     <>
-      <span>{currentOperation}</span> <br />
+      <span>{currentOperation}</span>
       <div id="network-popUp" style={{ display: isEditing ? 'block' : 'none' }}>
         <div style={{ margin: 'auto', paddingBottom: '20px', display: isEditing ? 'block' : 'none' }}>
           <h3>Enter a new Industry</h3>

@@ -9,9 +9,8 @@ const App = () => {
 
   return (
     <Container>
-      <Header id='site-id' as='h2' icon textAlign='center'>
-        <Icon name='sitemap' circular />
-        Taxidermy of Taxonomies
+      <Header id='site-id' as='h2' inverted textAlign='center'>
+        <Icon name='sitemap' inverted /> Taxonomy Taxidermy
       </Header>
 
       <Network edgesInStore={state.edges} nodesInStore={state.nodes} dispatch={dispatch}/>
