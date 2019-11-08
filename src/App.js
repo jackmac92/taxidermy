@@ -5,7 +5,7 @@ import Network from './components/Network';
 import CompanySelect from './components/CompanySelect';
 
 const App = () => {
-  const { state } = React.useContext(Store);
+  const { state, dispatch } = React.useContext(Store);
 
   return (
     <Container>
@@ -14,7 +14,7 @@ const App = () => {
         Taxidermy of Taxonomies
       </Header>
 
-      <Network />
+      <Network edgesInStore={state.edges} nodesInStore={state.nodes} dispatch={dispatch}/>
 
       <CompanySelect activeCategories={state.activeCategories} modal={state.modal} />
     </Container>
