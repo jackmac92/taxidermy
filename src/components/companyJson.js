@@ -1,5 +1,143 @@
 const suggestions = [
   {
+   "id_company": 309605,
+   "company": "Accutar Biotech",
+   "url": "accutarbio.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 312426,
+   "company": "Adapsyn Bioscience",
+   "url": "adapsyn.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 229288,
+   "company": "Atomwise",
+   "url": "atomwise.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 256076,
+   "company": "BioAge Labs",
+   "url": "bioagelabs.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 182428,
+   "company": "Cyclica",
+   "url": "cyclicarx.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 236576,
+   "company": "Envisagenics",
+   "url": "envisagenics.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 299071,
+   "company": "GTN",
+   "url": "gtn.ai",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 305390,
+   "company": "Hims",
+   "url": "forhims.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 307307,
+   "company": "Inato",
+   "url": "inato.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 324787,
+   "company": "Insitro",
+   "url": "insitro.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 294280,
+   "company": "Juvenescence",
+   "url": "juvenescence.ltd",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 329228,
+   "company": "Juvenescence",
+   "url": null,
+   "short_descrip": ""
+ },
+ {
+   "id_company": 229468,
+   "company": "Notable Labs",
+   "url": "notablelabs.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 251601,
+   "company": "NURX",
+   "url": "nurx.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 313126,
+   "company": "OWKIN",
+   "url": "owkin.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 272827,
+   "company": "PathAI",
+   "url": "pathai.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 255755,
+   "company": "Pill Club",
+   "url": "thepillclub.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 291848,
+   "company": "Qrativ",
+   "url": "qrativ.bio",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 289949,
+   "company": "Reverie Labs",
+   "url": "reverielabs.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 317646,
+   "company": "Spring Discovery",
+   "url": "springdisc.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 287956,
+   "company": "Standigm",
+   "url": "standigm.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 377440,
+   "company": "Truepill",
+   "url": "truepill.com",
+   "short_descrip": ""
+ },
+ {
+   "id_company": 254249,
+   "company": "XtalPi",
+   "url": "xtalpi.com",
+   "short_descrip": ""
+ },
+  {
     "id_company": 1,
     "company": "Center Point Manufacturing",
     "url": "centerpointmfg.com",
@@ -3730,6 +3868,12 @@ const suggestions = [
     "company": "CPA2Biz",
     "url": "cpa2biz.com",
     "short_descrip": "CPA2Biz is a source of products and serv"
+  },
+  {
+    "id_company": 991222,
+    "company": "Oscar",
+    "url": "oscar.com",
+    "short_descrip": ""
   },
   {
     "id_company": 646,
