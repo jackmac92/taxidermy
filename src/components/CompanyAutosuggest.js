@@ -1,6 +1,8 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import suggestions from './companyJson';
+import { Store } from '../Store';
+import { addCompanyInCategory } from '../actions/network';
 
 const theme = {
   container: {
@@ -74,11 +76,6 @@ function getSuggestions(value) {
   return suggestions.filter(company => regex.test(company.company));
 }
 
-function getSuggestionValue(suggestion) {
-  console.log(suggestion);
-  return suggestion.company;
-}
-
 function renderSuggestion(suggestion) {
   return (
     <div>
@@ -98,6 +95,12 @@ class CompanyAutosuggest extends React.Component {
       suggestions: []
     };    
   }
+
+  getSuggestionValue = (suggestion, dispatch, category) => {
+    dispatch(addCompanyInCategory(suggestion.company, category));
+    return suggestion.company;
+  }
+
 
   onChange = (event, { newValue, method }) => {
     this.setState({
@@ -119,6 +122,7 @@ class CompanyAutosuggest extends React.Component {
 
   render() {
     const { value, suggestions } = this.state;
+    const { dispatch, category } = this.props;
     const inputProps = {
       placeholder: "Type 'c'",
       value,
@@ -130,7 +134,7 @@ class CompanyAutosuggest extends React.Component {
         suggestions={suggestions.slice(0, 5)}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}
-        getSuggestionValue={getSuggestionValue}
+        getSuggestionValue={(suggestion) => this.getSuggestionValue(suggestion, dispatch, category)}
         renderSuggestion={renderSuggestion}
         inputProps={inputProps}
         theme={theme}

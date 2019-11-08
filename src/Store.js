@@ -1,5 +1,5 @@
 import React from 'react'
-import { TOGGLE_MODAL } from './actions/network'
+import { TOGGLE_MODAL, UPDATE_COMPANY_IN_CATEGORY } from './actions/network'
 
 export const Store = React.createContext()
 
@@ -7,9 +7,19 @@ const initialState = {
   activeCategories: ['Internet'],
   modal: {
     open: false,
-    activeCategory: 'Internet',
+    activeCategory: '',
     activeCategoryId: '1',
   },
+  companiesInCategory: {},
+}
+
+const addCompanyToCategory = (categories, category, company) => {
+  console.log(categories)
+  if (category in categories){
+    return {...categories, [category]: [...categories[category], company]};
+  } else {
+    return {...categories, [category]: [company]};
+  }
 }
 
 function reducer(state = initialState, action) {
@@ -18,6 +28,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         activeCategories: [...state.activeCategories, action.payload]
+      }
+    case UPDATE_COMPANY_IN_CATEGORY:
+      return {
+        ...state,
+        companiesInCategory: addCompanyToCategory(state.companiesInCategory, action.category, action.company),
       }
     case TOGGLE_MODAL:
       return {

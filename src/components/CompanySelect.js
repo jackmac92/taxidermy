@@ -1,21 +1,34 @@
 import React from 'react';
-import { Modal } from 'semantic-ui-react';
+import { Modal, List } from 'semantic-ui-react';
 import { Store } from '../Store';
 import CompanyAutosuggest from './CompanyAutosuggest';
 import { toggleCompaniesModal } from '../actions/network';
 
 const CompanySelectModal = ({ activeCategories = [] }) => {
   const { state, dispatch } = React.useContext(Store);
+  let companyList = null;
 
-  return <Modal closeIcon onClose={()=>{dispatch(toggleCompaniesModal({id: null, label: null}))}} open={state.modal.open}>
+  if (state.modal.activeCategory && state.companiesInCategory[state.modal.activeCategory]){
+    companyList = state.companiesInCategory[state.modal.activeCategory].map((company) => 
+      <List.Item key={company}>
+        <List.Content>
+          <List.Header as='a'>{company}</List.Header>
+        </List.Content>
+      </List.Item>
+    );
+  }
+  return <Modal closeIcon onClose={()=>{dispatch(toggleCompaniesModal({id: state.modal.activeCategoryId, label: state.modal.activeCategory}))}} open={state.modal.open}>
     <Modal.Header>Select a Business</Modal.Header>
 
     <Modal.Content>
       <Modal.Description>
-        <p>Select companies to add to: {activeCategories.join(' ')}</p>
+        <p>Select companies to add to: {state.modal.activeCategory}</p>
       </Modal.Description>
 
-      <CompanyAutosuggest />
+      <CompanyAutosuggest dispatch={dispatch} category={state.modal.activeCategory}/>
+      <List>
+        {companyList}
+      </List>
     </Modal.Content>
   </Modal>
 };
