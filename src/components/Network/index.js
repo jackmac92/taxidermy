@@ -94,9 +94,14 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
       setIsEditing(false);
       callback(null);
     }
+    const useHeirarchy = document.location.search.includes('topdown')
+    const hierarchical= {
+      enabled: useHeirarchy
+    }
     const options = {
       layout: {
-        randomSeed: 1
+        randomSeed: 1,
+        hierarchical,
       },
       manipulation: {
         // gets called immediately when clicking add node button
@@ -196,10 +201,13 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
         dispatch(toggleCompaniesModal(clickedNode.options));
       }
     });
+
   };
 
   useEffect(() => loadNetwork(), []);
-  network !== null && network.redraw();
+  if (network !== null) {
+    network.redraw()
+  }
   return (
     <>
       <span>{currentOperation}</span>
