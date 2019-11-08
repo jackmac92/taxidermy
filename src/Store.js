@@ -82,6 +82,35 @@ const addCompanyToCategory = (categories, category, company) => {
   }
 }
 
+const updateNode = (nodes, edges, fromNode) => {
+  let rootNode = true;
+  let leafNode = true;
+  let group = "mints";
+  for (let index = 0; index < edges.length; index++) { 
+    if (edges[index].to === fromNode) {
+      rootNode = false;
+    }
+    if (edges[index].from === fromNode) {
+      leafNode = false;
+    }
+  }
+  if (rootNode) {
+    group = "diamonds";
+  } else if (leafNode) {
+    group = "icons";
+  }
+  let newNodes = [];
+  for (let index = 0; index < nodes.length; index++) {
+    if (nodes[index].id === fromNode) {
+       newNodes.push({id: fromNode, label: nodes[index].label, group: group})
+    } else {
+
+      newNodes.push(nodes[index]);
+    }
+  }
+  return newNodes;
+}
+
 function reducer(state = initialState, action) {
   switch (action.type) {
     case 'SELECT_CATEGORY':
@@ -107,6 +136,7 @@ function reducer(state = initialState, action) {
     case ADD_EDGE:
       return {
         ...state,
+        nodes: updateNode(state.nodes, state.edges, action.fromNode),
         edges: [...state.edges, {from: action.fromNode, to:action.toNode}]
       }
     case DELETE_NODE:

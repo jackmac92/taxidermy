@@ -96,6 +96,7 @@ class CompanyAutosuggest extends React.Component {
   }
 
   getSuggestionValue = (suggestion, dispatch, category) => {
+    console.log(suggestion);
     dispatch(addCompanyInCategory(suggestion.company, category));
     return suggestion.company;
   }
