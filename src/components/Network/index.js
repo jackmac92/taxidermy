@@ -113,22 +113,31 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
       },
       groups: {
         red: {
-          color: {
-            background: '#ff6633',
-            border: '#e5323e',
-          },
+          shape: 'icon',
+          icon: {
+            face: 'FontAwesome',
+            code: '\uf0f7',
+            size: 100,
+            color: '#ff6633'
+          }
         },
         blue: {
-          color: {
-            background: '#4cabce',
-            border: '#006699',
-          }
+          shape: 'icon',
+          icon: {
+            face: 'FontAwesome',
+            code: '\uf1b3',
+            size: 75,
+            color: '#4cabce'
+          },
         },
         green: {
-          color: {
-            background: '#70c390',
-            border: '#00986b'
-          }
+          shape: 'icon',
+          icon: {
+            face: 'FontAwesome',
+            code: '\uf1b3',
+            size: 75,
+            color: '#70c390'
+          },
         },
       },
       physics: {
