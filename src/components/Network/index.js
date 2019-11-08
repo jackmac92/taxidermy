@@ -6,7 +6,6 @@ import { toggleCompaniesModal } from '../../actions/network';
 
 const Network = () => {
   const { dispatch } = React.useContext(Store)
-  // Create an array with nodes
   let network = null
   const [selectedNode, setSelectedNode] = useState({})
   const [isEditing, setIsEditing] = useState(false)
@@ -17,6 +16,7 @@ const Network = () => {
       network = null
     }
 
+    // Create an array with nodes
     const nodes = new vis.DataSet([
       { id: 1, label: 'Node 1' },
       { id: 2, label: 'Node 2' },
@@ -36,10 +36,7 @@ const Network = () => {
 
     // Create a network
     const container = document.getElementById('industry-network')
-    const data = {
-      nodes: nodes,
-      edges: edges
-    }
+    const data = { nodes, edges }
 
     function saveData(data, callback) {
       setIsEditing(false)
@@ -51,6 +48,9 @@ const Network = () => {
       callback(null)
     }
     const options = {
+      layout: {
+        randomSeed: 1
+      },
       manipulation: {
         addNode(data, callback) {
           // filling in the popup DOM elements
@@ -96,28 +96,25 @@ const Network = () => {
     });
   }
 
-
-  useEffect(() => {
-    // Update the document title using the browser API
-    loadNetwork()
-  })
+  useEffect(() => loadNetwork());
 
   return (
     <>
       <span>{currentOperation}</span> <br />
+
       <div id="network-popUp" style={{ display: isEditing ? 'block' : 'none' }}>
         <table style={{ margin: 'auto', display: 'none' }}>
           <tbody>
             <tr>
               <td>id</td>
               <td>
-                <input id="node-id" value="new value" />
+                <input id="node-id" value="new value" onChange={() => {}}/>
               </td>
             </tr>
             <tr>
               <td>label</td>
               <td>
-                <input id="node-label" value="new value" />
+                <input id="node-label" value="new value" onChange={() => {}} />
               </td>
             </tr>
           </tbody>
