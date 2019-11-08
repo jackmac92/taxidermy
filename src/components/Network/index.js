@@ -168,7 +168,7 @@ const Network = () => {
     });
   };
 
-  useEffect(() => loadNetwork(), [network]);
+  useEffect(() => loadNetwork(), []);
   network !== null && network.redraw();
   return (
     <>
