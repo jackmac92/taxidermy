@@ -38,7 +38,12 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
     const isShowingHeirarchyView = document.location.search.includes('topdown')
 
     const hierarchical= {
-      enabled: isShowingHeirarchyView
+      enabled: isShowingHeirarchyView,
+      levelSeparation: 300,
+      edgeMinimization: false,
+      direction: 'UD',        // UD, DU, LR, RL
+      sortMethod: 'directed',  // hubsize, directed
+      shakeTowards: 'roots'  // roots, leaves
     }
 
     const options = {
