@@ -35,9 +35,16 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
       callback(null);
     }
 
+    const isShowingHeirarchyView = document.location.search.includes('topdown')
+
+    const hierarchical= {
+      enabled: isShowingHeirarchyView
+    }
+
     const options = {
       layout: {
-        randomSeed: 1
+        randomSeed: 1,
+        hierarchical,
       },
       manipulation: {
         // gets called immediately when clicking add node button
@@ -100,41 +107,44 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
       },
       edges: {
         width: 3,
-        length: 2000,
-        smooth: {
-          enabled: true,
+        length: isShowingHeirarchyView ? 600 : 2000,
+        color: {
+          color: '#c2bfbf',
+          highlight: '#d772ad',
         }
       },
       groups: {
         red: {
-          color: {
-            background: '#ff6633',
-            border: '#e5323e',
-          },
-        },
-        blue: {
-          color: {
-            background: '#4cabce',
-            border: '#006699',
-          }
-        },
-        green: {
-          color: {
-            background: '#70c390',
-            border: '#00986b'
-          }
-        },
-        icons: {
           shape: 'icon',
           icon: {
             face: 'FontAwesome',
-            code: '\uf275',
+            code: '\uf0f7',
             size: 100,
-            color: 'orange'
+            color: '#ff6633'
           }
         },
-        source: {
-          color:{ border:'white' }
+        blue: {
+          shape: 'icon',
+          icon: {
+            face: 'FontAwesome',
+            code: '\uf1b3',
+            size: 75,
+            color: '#4cabce'
+          },
+        },
+        green: {
+          shape: 'icon',
+          icon: {
+            face: 'FontAwesome',
+            code: '\uf1b2',
+            size: 75,
+            color: '#70c390'
+          },
+        },
+      },
+      physics: {
+        repulsion: {
+          nodeDistance: 50
         }
       }
     };
@@ -148,10 +158,13 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
         dispatch(toggleCompaniesModal(clickedNode.options));
       }
     });
+
   };
 
   useEffect(() => loadNetwork(), []);
-  network !== null && network.redraw();
+  if (network !== null) {
+    network.redraw()
+  }
   return (
     <>
       <span>{currentOperation}</span>
