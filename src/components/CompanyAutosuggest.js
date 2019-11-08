@@ -65,7 +65,7 @@ function escapeRegexCharacters(str) {
 
 function getSuggestions(value) {
   const escapedValue = escapeRegexCharacters(value.trim());
-  
+
   if (escapedValue === '') {
     return [];
   }
@@ -92,7 +92,7 @@ class CompanyAutosuggest extends React.Component {
     this.state = {
       value: '',
       suggestions: []
-    };    
+    };
   }
 
   getSuggestionValue = (suggestion, dispatch, category) => {
@@ -107,7 +107,7 @@ class CompanyAutosuggest extends React.Component {
       value: newValue
     });
   };
-  
+
   onSuggestionsFetchRequested = ({ value }) => {
     this.setState({
       suggestions: getSuggestions(value)
@@ -130,7 +130,7 @@ class CompanyAutosuggest extends React.Component {
     };
 
     return (
-      <Autosuggest 
+      <Autosuggest
         suggestions={suggestions.slice(0, 5)}
         onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
         onSuggestionsClearRequested={this.onSuggestionsClearRequested}

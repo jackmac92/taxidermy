@@ -136,7 +136,7 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
           shape: 'icon',
           icon: {
             face: 'FontAwesome',
-            code: '\uf1b3',
+            code: '\uf1b2',
             size: 75,
             color: '#70c390'
           },
