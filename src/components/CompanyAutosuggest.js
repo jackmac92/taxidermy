@@ -124,7 +124,7 @@ class CompanyAutosuggest extends React.Component {
     const { value, suggestions } = this.state;
     const { dispatch, category } = this.props;
     const inputProps = {
-      placeholder: "Type 'c'",
+      placeholder: "",
       value,
       onChange: this.onChange
     };
