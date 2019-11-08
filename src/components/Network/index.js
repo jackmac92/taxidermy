@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import vis from 'vis-network';
 import './styles.css';
 import { Store } from '../../Store';
@@ -8,6 +8,7 @@ const Network = () => {
   let network = null;
 
   const { dispatch } = React.useContext(Store);
+  const labelRef = useRef(null)
   const [idInput, setIdInput] = useState('');
   const [labelInput, setLabelInput] = useState('');
   const [isEditing, setIsEditing] = useState(false);
@@ -78,8 +79,12 @@ const Network = () => {
     const container = document.getElementById('industry-network');
     const data = { nodes, edges };
     function saveData(data, callback) {
+      const realData = {
+        ...data,
+        label: labelRef.current.value
+      }
+      callback(realData);
       setIsEditing(false);
-      callback(data);
     }
 
     function cancelEdit(callback) {
@@ -185,7 +190,8 @@ const Network = () => {
           <input
             id="node-label"
             value={labelInput}
-            onChange={e => setLabelInput(e.target.value)}
+            ref={labelRef}
+            onChange={e => { setLabelInput(e.target.value) }}
           />
         </div>
         <input type="button" value="save" id="saveButton" />
