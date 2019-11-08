@@ -7,6 +7,10 @@
   height: 650px;
 }
 
+.vis-network {
+  outline: none;
+}
+
 .vis-manipulation {
   background: #f1f5f7;
   border-bottom: 1px solid #D8D8D8;
