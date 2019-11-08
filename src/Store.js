@@ -1,9 +1,15 @@
 import React from 'react'
+import { TOGGLE_MODAL } from './actions/network'
 
 export const Store = React.createContext()
 
 const initialState = {
-  activeCategories: ['Internet']
+  activeCategories: ['Internet'],
+  modal: {
+    open: false,
+    activeCategory: 'Internet',
+    activeCategoryId: '1',
+  },
 }
 
 function reducer(state = initialState, action) {
@@ -12,6 +18,11 @@ function reducer(state = initialState, action) {
       return {
         ...state,
         activeCategories: [...state.activeCategories, action.payload]
+      }
+    case TOGGLE_MODAL:
+      return {
+        ...state,
+        modal: {open: !state.modal.open, activeCategory: action.activeCategory, activeCategoryId: action.id}
       }
     default:
       return state

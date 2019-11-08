@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import vis from 'vis-network'
 import './styles.css'
+import { Store } from '../../Store';
+import { toggleCompaniesModal } from '../../actions/network';
 
 const Network = () => {
+  const { dispatch } = React.useContext(Store)
   // Create an array with nodes
   let network = null
   const [selectedNode, setSelectedNode] = useState({})
@@ -81,9 +84,18 @@ const Network = () => {
       }
     }
 
-    network = new vis.Network(container, data, options)
-    network.enableEditMode()
+
+    network = new vis.Network(container, data, options);
+    network.enableEditMode();
+    network.on('click', function (properties) {
+      var nodeID = properties.nodes[0];
+      if (nodeID) {
+        var clickedNode = this.body.nodes[nodeID];
+        dispatch(toggleCompaniesModal(clickedNode.options));
+      }
+    });
   }
+
 
   useEffect(() => {
     // Update the document title using the browser API
