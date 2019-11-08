@@ -1,13 +1,12 @@
 import React, { useEffect, useState, useRef } from 'react';
 import vis from 'vis-network';
 import './styles.css';
-import { Store } from '../../Store';
-import { toggleCompaniesModal } from '../../actions/network';
+import { toggleCompaniesModal, addNode, deleteNode, addEdge, deleteEdge } from '../../actions/network';
 
-const Network = () => {
+const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
+  // const { dispatch } = React.useContext(Store);
   let network = null;
 
-  const { dispatch } = React.useContext(Store);
   const labelRef = useRef(null)
   const [idInput, setIdInput] = useState('');
   const [labelInput, setLabelInput] = useState('');
@@ -21,59 +20,63 @@ const Network = () => {
     // }
 
     // Create an array with nodes
-    const nodes = new vis.DataSet([
-      {id: 0, label: "root", group: 'source'},
-      {id: 1, label: "1", group: 'icons'},
-      {id: 2, label: "2", group: 'icons'},
-      {id: 3, label: "3", group: 'icons'},
-      {id: 4, label: "4", group: 'icons'},
-      {id: 5, label: "5", group: 'icons'},
-      {id: 6, label: "6", group: 'icons'},
-      {id: 7, label: "7", group: 'icons'},
-      {id: 8, label: "8", group: 'icons'},
-      {id: 9, label: "9", group: 'icons'},
-      {id: 10, label: "10", group: 'mints'},
-      {id: 11, label: "11", group: 'mints'},
-      {id: 12, label: "12", group: 'mints'},
-      {id: 13, label: "13", group: 'mints'},
-      {id: 14, label: "14", group: 'mints'},
-      {id: 15, label: "15", group: 'mints'},
-      {id: 16, label: "16", group: 'mints'},
-      {id: 17, label: "17", group: 'diamonds'},
-      {id: 18, label: "18", group: 'diamonds'},
-      {id: 19, label: "19", group: 'diamonds'},
-      {id: 20, label: "20", group: 'diamonds'},
-      {id: 21, label: "21", group: 'diamonds'},
-      {id: 22, label: "22", group: 'diamonds'},
-      {id: 23, label: "23", group: 'diamonds'},
-    ]);
+    // const nodes = new vis.DataSet([
+    //   {id: 0, label: "root", group: 'source'},
+    //   {id: 1, label: "1", group: 'icons'},
+    //   {id: 2, label: "2", group: 'icons'},
+    //   {id: 3, label: "3", group: 'icons'},
+    //   {id: 4, label: "4", group: 'icons'},
+    //   {id: 5, label: "5", group: 'icons'},
+    //   {id: 6, label: "6", group: 'icons'},
+    //   {id: 7, label: "7", group: 'icons'},
+    //   {id: 8, label: "8", group: 'icons'},
+    //   {id: 9, label: "9", group: 'icons'},
+    //   {id: 10, label: "10", group: 'mints'},
+    //   {id: 11, label: "11", group: 'mints'},
+    //   {id: 12, label: "12", group: 'mints'},
+    //   {id: 13, label: "13", group: 'mints'},
+    //   {id: 14, label: "14", group: 'mints'},
+    //   {id: 15, label: "15", group: 'mints'},
+    //   {id: 16, label: "16", group: 'mints'},
+    //   {id: 17, label: "17", group: 'diamonds'},
+    //   {id: 18, label: "18", group: 'diamonds'},
+    //   {id: 19, label: "19", group: 'diamonds'},
+    //   {id: 20, label: "20", group: 'diamonds'},
+    //   {id: 21, label: "21", group: 'diamonds'},
+    //   {id: 22, label: "22", group: 'diamonds'},
+    //   {id: 23, label: "23", group: 'diamonds'},
+    // ]);
+
+    // // Create an array with edges
+    // const edges = new vis.DataSet([
+    //   {from: 1, to: 0},
+    //   {from: 2, to: 0},
+    //   {from: 4, to: 3},
+    //   {from: 5, to: 4},
+    //   {from: 4, to: 0},
+    //   {from: 7, to: 6},
+    //   {from: 8, to: 7},
+    //   {from: 7, to: 0},
+    //   {from: 10, to: 9},
+    //   {from: 11, to: 10},
+    //   {from: 10, to: 4},
+    //   {from: 13, to: 12},
+    //   {from: 14, to: 13},
+    //   {from: 13, to: 0},
+    //   {from: 16, to: 15},
+    //   {from: 17, to: 15},
+    //   {from: 15, to: 10},
+    //   {from: 19, to: 18},
+    //   {from: 20, to: 19},
+    //   {from: 19, to: 4},
+    //   {from: 22, to: 21},
+    //   {from: 23, to: 22},
+    //   {from: 23, to: 0},
+    // ]);
+    const nodes = new vis.DataSet(nodesInStore);
 
     // Create an array with edges
-    const edges = new vis.DataSet([
-      {from: 1, to: 0},
-      {from: 2, to: 0},
-      {from: 4, to: 3},
-      {from: 5, to: 4},
-      {from: 4, to: 0},
-      {from: 7, to: 6},
-      {from: 8, to: 7},
-      {from: 7, to: 0},
-      {from: 10, to: 9},
-      {from: 11, to: 10},
-      {from: 10, to: 4},
-      {from: 13, to: 12},
-      {from: 14, to: 13},
-      {from: 13, to: 0},
-      {from: 16, to: 15},
-      {from: 17, to: 15},
-      {from: 15, to: 10},
-      {from: 19, to: 18},
-      {from: 20, to: 19},
-      {from: 19, to: 4},
-      {from: 22, to: 21},
-      {from: 23, to: 22},
-      {from: 23, to: 0},
-    ]);
+    const edges = new vis.DataSet(edgesInStore);
 
     // Create a network
     const container = document.getElementById('industry-network');
@@ -103,8 +106,10 @@ const Network = () => {
           setIdInput(data.id);
           setLabelInput(data.label);
           document.getElementById('saveButton').onclick = () => {
+            console.log(data)
+            dispatch(addNode({id: data.id, label: data.label}));
             saveData(data, callback);
-          };
+          }
           setIsEditing(true);
         },
         editNode(data, callback) {
@@ -114,7 +119,10 @@ const Network = () => {
           setLabelInput(data.label);
           document.getElementById('saveButton').onclick = () => {
             saveData(data, callback);
-          };
+            console.log("asdfasf", data)
+
+          }
+
           document.getElementById('cancelButton').onclick = () => {
             cancelEdit(callback);
           };
@@ -122,6 +130,7 @@ const Network = () => {
         },
         addEdge(data, callback) {
           callback(data);
+          dispatch(addEdge({fromNode: data.from, toNode: data.to}));
         }
       },
       nodes: {
@@ -134,7 +143,8 @@ const Network = () => {
         borderWidth: 2
       },
       edges: {
-        width: 2
+        width: 2,
+        length: 400
       },
       groups: {
         diamonds: {
@@ -152,12 +162,12 @@ const Network = () => {
           icon: {
             face: 'FontAwesome',
             code: '\uf275',
-            size: 50,
+            size: 100,
             color: 'orange'
           }
         },
         source: {
-          color:{border:'white'}
+          color:{ border:'white' }
         }
       }
     };

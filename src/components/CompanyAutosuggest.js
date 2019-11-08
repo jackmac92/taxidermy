@@ -1,7 +1,6 @@
 import React from 'react';
 import Autosuggest from 'react-autosuggest';
 import suggestions from './companyJson';
-import { Store } from '../Store';
 import { addCompanyInCategory } from '../actions/network';
 
 const theme = {
