@@ -178,6 +178,7 @@ const Network = () => {
           <input
             id="node-id"
             value={idInput}
+            style={{ display: 'none' }}
             onChange={e => setIdInput(e.target.value)}
           />
           <input
