@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState } from 'react';
 import vis from 'vis-network';
 import './styles.css';
 import { Store } from '../../Store';
