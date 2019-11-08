@@ -1,7 +1,7 @@
 import React from 'react';
-import { Store } from './Store'
-import Network from './components/Network.js'
-import CompanySelectModal from './components/CompanySelectModal.js'
+import { Store } from './Store';
+import Network from './components/Network';
+import CompanySelectModal from './components/CompanySelectModal';
 
 const App = () => {
   const { state } = React.useContext(Store)
@@ -17,4 +17,4 @@ const App = () => {
   );
 }
 
-export default App
+export default App;

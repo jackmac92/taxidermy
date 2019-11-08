@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import vis from 'vis-network';
+import './styles.css'
 
 const Network = () => {
-
   // Create an array with nodes
   const loadNetwork = () => {
     const nodes = new vis.DataSet([
@@ -23,13 +23,14 @@ const Network = () => {
     ]);
 
     // Create a network
-    const container = document.getElementById('mynetwork');
+    const container = document.getElementById('industry-network');
     const data = {
       nodes: nodes,
       edges: edges
     };
     const options = {};
-    const network = new vis.Network(container, data, options);
+
+    new vis.Network(container, data, options);
   }
 
   useEffect(() => {
@@ -38,7 +39,7 @@ const Network = () => {
   });
 
   return(
-    <div id="mynetwork"></div>
+    <div id="industry-network"></div>
   );
 }
 
