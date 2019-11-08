@@ -140,7 +140,13 @@ const Network = ({ nodesInStore, edgesInStore, dispatch }) => {
         addEdge(data, callback) {
           callback(data);
           dispatch(addEdge({fromNode: data.from, toNode: data.to}));
+        },
+        deleteEdge(data, callback) {
+          callback(data);
+          console.log(data);
+          dispatch(deleteNode({edgeId: data.edges[0], nodeId: data.nodes[0]}));
         }
+
       },
       nodes: {
         shape: 'dot',
