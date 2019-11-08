@@ -1,6 +1,6 @@
 import React from 'react';
 import { flattenDeep } from 'lodash';
-import { Modal, List } from 'semantic-ui-react';
+import { Modal, Label } from 'semantic-ui-react';
 import { Store } from '../Store';
 import CompanyAutosuggest from './CompanyAutosuggest';
 import { toggleCompaniesModal } from '../actions/network';
@@ -33,15 +33,10 @@ const CompanySelectModal = ({ activeCategories = [] }) => {
     }
     if (companies.length > 0) {
       companyList = flattenDeep(companies).map((company) =>
-        <List.Item key={company}>
-          <List.Content>
-            <List.Header as='a'>{company}</List.Header>
-          </List.Content>
-        </List.Item>
-        );
+        <Label color="orange">{company}</Label>
+      );
     }
-
-   }
+  }
 
     const modalStyles = {
       position: 'relative',
@@ -61,7 +56,9 @@ const CompanySelectModal = ({ activeCategories = [] }) => {
         <Modal.Content>
           <CompanyAutosuggest dispatch={dispatch} category={state.modal.activeCategoryId}/>
 
-          <List>{companyList}</List>
+          <div className='modal-company-list'>
+            {companyList}
+          </div>
         </Modal.Content>
       </Modal>
     )

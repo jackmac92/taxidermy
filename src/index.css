@@ -31,5 +31,12 @@ img {
 }
 
 #add-company {
-  margin-top: -10rem;
+  margin-top: -8rem;
 }
+
+.modal-company-list {
+  margin-top: 2rem;
+}
+  .modal-company-list .label {
+    margin: .5rem .5rem 0 0;
+  }
