@@ -15,40 +15,60 @@
   position: absolute;
   left: 0;
   top: 0;
-  display: flex !important;
-  justify-content: flex-start;
 }
 
   .vis-manipulation > div {
     display: inline-block;
   }
 
-  .vis-manipulation .vis-button {
-    color: #FFF;
-    background: #006699;
-    padding: .3rem 1rem;
-    margin: 0 .25rem 0 0;
-    border-radius: 3px;
-    font-weight: bold;
-    font-size: .75rem;
+.vis-button {
+  color: #FFF;
+  background: #006699;
+  padding: .3rem 1rem;
+  margin: 0 .25rem 0 0;
+  border-radius: 3px;
+  font-weight: bold;
+  font-size: .75rem;
+}
+  .vis-button:hover {
+    cursor: pointer;
+  }
+  .vis-button.vis-none {
+    background: transparent;
+    color: #404040;
+  }
+  .vis-button.vis-none:hover {
+    cursor: default;
   }
 
-  .vis-manipulation .vis-separator-line {
-    display: none !important;
-    margin: 0 1px;
-  }
+.vis-separator-line {
+  display: none !important;
+  margin: 0 1px;
+}
 
 .vis-edit-mode {
+  background: #f1f5f7;
+  border-bottom: 1px solid #D8D8D8;
+  padding: .25rem;
+  width: 100%;
+  position: absolute;
+  left: 0;
   top: 0;
 }
-  .vis-edit-mode .vis-button {
-    top: 0;
+  .vis-edit-mode > .vis-edit-mode {
+    background: #006699;
+    position: relative;
+    width: 60px;
+    text-align: center;
+  }
+  .vis-edit-mode > .vis-edit-mode:hover {
+    cursor: pointer;
   }
 
 .vis-close {
   position: absolute;
-  top: .45rem;
-  right: .45rem;
+  top: .4rem;
+  right: 0;
   width: 20px;
   height: 20px;
 }
@@ -63,7 +83,7 @@
     font-style: normal;
     font-variant: normal;
     text-rendering: auto;
-    font-size: 1.5rem;
+    font-size: 1rem;
     -webkit-font-smoothing: antialiased;
   }
 
