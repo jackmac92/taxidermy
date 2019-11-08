@@ -8,7 +8,6 @@ import { toggleCompaniesModal } from '../actions/network';
 const CompanySelectModal = ({ activeCategories = [] }) => {
   const { state, dispatch } = React.useContext(Store);
   let companyList = null;
-
   const edges = state.edges;
   if (state.modal.activeCategoryId){
     let companies = [];
@@ -44,23 +43,28 @@ const CompanySelectModal = ({ activeCategories = [] }) => {
 
    }
 
+    const modalStyles = {
+      position: 'relative',
+      top: '-4rem'
+    }
 
-   return (
-    <Modal closeIcon onClose={()=>{dispatch(toggleCompaniesModal({id: state.modal.activeCategoryId, label: state.modal.activeCategory}))}} open={state.modal.open}>
-      <Modal.Header>Select a Business</Modal.Header>
+    const headerStyles = {
+      background: '#006699',
+      color: '#FFF',
+      textAlign: 'center'
+    }
 
-      <Modal.Content>
-        <Modal.Description>
-          <p>Select companies to add to: {state.modal.activeCategory}</p>
-        </Modal.Description>
+    return (
+      <Modal closeIcon id="add-company" onClose={()=>{dispatch(toggleCompaniesModal({id: state.modal.activeCategoryId, label: state.modal.activeCategory}))}} open={state.modal.open}>
+        <Modal.Header style={headerStyles}>Select companies to add to {state.modal.activeCategory}</Modal.Header>
 
-        <CompanyAutosuggest dispatch={dispatch} category={state.modal.activeCategoryId}/>
-        <List>
-          {companyList}
-        </List>
-      </Modal.Content>
-    </Modal>
-  )
+        <Modal.Content>
+          <CompanyAutosuggest dispatch={dispatch} category={state.modal.activeCategoryId}/>
+
+          <List>{companyList}</List>
+        </Modal.Content>
+      </Modal>
+    )
 };
 
 export default CompanySelectModal;

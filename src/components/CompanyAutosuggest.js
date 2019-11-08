@@ -8,12 +8,13 @@ const theme = {
     position: 'relative'
   },
   input: {
-    width: 240,
+    marginTop: '1rem',
+    width: '100%',
     height: 30,
-    padding: '10px 20px',
+    padding: '2rem 1rem',
     fontFamily: 'Helvetica, sans-serif',
     fontWeight: 300,
-    fontSize: 16,
+    fontSize: '2rem',
     border: '1px solid #aaa',
     borderTopLeftRadius: 4,
     borderTopRightRadius: 4,
@@ -33,8 +34,8 @@ const theme = {
   suggestionsContainerOpen: {
     display: 'block',
     position: 'absolute',
-    top: 51,
-    width: 280,
+    top: 81,
+    width: '100%',
     border: '1px solid #aaa',
     backgroundColor: '#fff',
     fontFamily: 'Helvetica, sans-serif',
@@ -42,7 +43,8 @@ const theme = {
     fontSize: 16,
     borderBottomLeftRadius: 4,
     borderBottomRightRadius: 4,
-    zIndex: 2
+    zIndex: 2,
+    boxShadow: '0px 3px 21px 0px rgba(0,0,0,0.58)'
   },
   suggestionsList: {
     margin: 0,
