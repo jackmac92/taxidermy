@@ -11,7 +11,10 @@ const initialState = {
     activeCategory: '',
     activeCategoryId: '1'
   },
-  companiesInCategory: {},
+  companiesInCategory: {
+    20: ["Nurx", "Hims", "Pill Club", "Truepill"],
+    14: ["Accutar Biotech", "Adapsyn Bioscience", "Atomwise", "BioAge Labs", "Cyclica", "Envisagenics", "GTN", "Inato", "Insitro", "Juvenescence Labs", "Notable", "OWKIN", "PathAI", "Qrativ", "Reverie Labs", "Spring Discovery", "Standigm", "XtalPi"],
+  },
   nodes: [
     { id: 1, label: 'Healthcare', group: 'red' },
     { id: 2, label: 'Health Monitoring', group: 'blue' },
