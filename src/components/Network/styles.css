@@ -1,5 +1,24 @@
 #industry-network {
   margin: 0 auto 1rem;
-  border: 1px solid #D8D8D8;
-  height: 500px;
+  border: 1px solid #d8d8d8;
+  height: auto;
+}
+#operation {
+  font-size: 28px;
+}
+
+#network-popUp {
+  display: none;
+  position: absolute;
+  top: 350px;
+  left: 170px;
+  z-index: 299;
+  width: 250px;
+  height: 120px;
+  background-color: #f9f9f9;
+  border-style: solid;
+  border-width: 3px;
+  border-color: #5394ed;
+  padding: 10px;
+  text-align: center;
 }

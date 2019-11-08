@@ -19,7 +19,9 @@ function reducer(state = initialState, action) {
 }
 
 export function StoreProvider(props) {
-  const [state, dispatch] = React.useReducer(reducer, initialState)
+  const store = React.useReducer(reducer, initialState)
+  window.store = store
+  const [state, dispatch] = store
   const value = { state, dispatch }
   return <Store.Provider value={value}>{props.children}</Store.Provider>
 }
