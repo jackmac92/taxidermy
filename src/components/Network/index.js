@@ -5,12 +5,14 @@ import { Store } from '../../Store';
 import { toggleCompaniesModal } from '../../actions/network';
 
 const Network = () => {
-  const { dispatch } = React.useContext(Store);
   let network = null;
+
+  const { dispatch } = React.useContext(Store);
   const [idInput, setIdInput] = useState('');
   const [labelInput, setLabelInput] = useState('');
   const [isEditing, setIsEditing] = useState(false);
   const [currentOperation, setCurrentOperation] = useState('');
+
   const loadNetwork = () => {
     if (network !== null) {
       network.destroy();
@@ -19,20 +21,57 @@ const Network = () => {
 
     // Create an array with nodes
     const nodes = new vis.DataSet([
-      { id: 1, label: 'Node 1' },
-      { id: 2, label: 'Node 2' },
-      { id: 3, label: 'Node 3' },
-      { id: 4, label: 'Node 4' },
-      { id: 5, label: 'Node 5' }
+      {id: 0, label: "root", group: 'source'},
+      {id: 1, label: "1", group: 'icons'},
+      {id: 2, label: "2", group: 'icons'},
+      {id: 3, label: "3", group: 'icons'},
+      {id: 4, label: "4", group: 'icons'},
+      {id: 5, label: "5", group: 'icons'},
+      {id: 6, label: "6", group: 'icons'},
+      {id: 7, label: "7", group: 'icons'},
+      {id: 8, label: "8", group: 'icons'},
+      {id: 9, label: "9", group: 'icons'},
+      {id: 10, label: "10", group: 'mints'},
+      {id: 11, label: "11", group: 'mints'},
+      {id: 12, label: "12", group: 'mints'},
+      {id: 13, label: "13", group: 'mints'},
+      {id: 14, label: "14", group: 'mints'},
+      {id: 15, label: "15", group: 'mints'},
+      {id: 16, label: "16", group: 'mints'},
+      {id: 17, label: "17", group: 'diamonds'},
+      {id: 18, label: "18", group: 'diamonds'},
+      {id: 19, label: "19", group: 'diamonds'},
+      {id: 20, label: "20", group: 'diamonds'},
+      {id: 21, label: "21", group: 'diamonds'},
+      {id: 22, label: "22", group: 'diamonds'},
+      {id: 23, label: "23", group: 'diamonds'},
     ]);
 
     // Create an array with edges
     const edges = new vis.DataSet([
-      { from: 1, to: 3 },
-      { from: 1, to: 2 },
-      { from: 2, to: 4 },
-      { from: 2, to: 5 },
-      { from: 3, to: 3 }
+      {from: 1, to: 0},
+      {from: 2, to: 0},
+      {from: 4, to: 3},
+      {from: 5, to: 4},
+      {from: 4, to: 0},
+      {from: 7, to: 6},
+      {from: 8, to: 7},
+      {from: 7, to: 0},
+      {from: 10, to: 9},
+      {from: 11, to: 10},
+      {from: 10, to: 4},
+      {from: 13, to: 12},
+      {from: 14, to: 13},
+      {from: 13, to: 0},
+      {from: 16, to: 15},
+      {from: 17, to: 15},
+      {from: 15, to: 10},
+      {from: 19, to: 18},
+      {from: 20, to: 19},
+      {from: 19, to: 4},
+      {from: 22, to: 21},
+      {from: 23, to: 22},
+      {from: 23, to: 0},
     ]);
 
     // Create a network
@@ -81,6 +120,42 @@ const Network = () => {
         },
         addEdge(data, callback) {
           callback(data);
+        }
+      },
+      nodes: {
+        shape: 'dot',
+        size: 50,
+        font: {
+          size: 25,
+          color: '#000'
+        },
+        borderWidth: 2
+      },
+      edges: {
+        width: 2
+      },
+      groups: {
+        diamonds: {
+          color: {
+            background:'red',
+            border:'orange'
+          },
+          shape: 'diamond'
+        },
+        mints: {
+          color:'rgb(0,255,140)'
+        },
+        icons: {
+          shape: 'icon',
+          icon: {
+            face: 'FontAwesome',
+            code: '\uf275',
+            size: 50,
+            color: 'orange'
+          }
+        },
+        source: {
+          color:{border:'white'}
         }
       }
     };
