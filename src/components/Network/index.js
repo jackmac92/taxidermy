@@ -129,7 +129,8 @@ const Network = () => {
         borderWidth: 2
       },
       edges: {
-        width: 2
+        width: 2,
+        length: 400
       },
       groups: {
         diamonds: {
@@ -147,12 +148,12 @@ const Network = () => {
           icon: {
             face: 'FontAwesome',
             code: '\uf275',
-            size: 50,
+            size: 100,
             color: 'orange'
           }
         },
         source: {
-          color:{border:'white'}
+          color:{ border:'white' }
         }
       }
     };
