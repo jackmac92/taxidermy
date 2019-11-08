@@ -12,10 +12,10 @@ const Network = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [currentOperation, setCurrentOperation] = useState('');
   const loadNetwork = () => {
-    if (network !== null) {
-      network.destroy();
-      network = null;
-    }
+    // if (network !== null) {
+    //   network.destroy();
+    //   network = null;
+    // }
 
     // Create an array with nodes
     const nodes = new vis.DataSet([
@@ -38,13 +38,9 @@ const Network = () => {
     // Create a network
     const container = document.getElementById('industry-network');
     const data = { nodes, edges };
-
     function saveData(data, callback) {
       setIsEditing(false);
-      callback({
-        id: idInput,
-        label: labelInput
-      });
+      callback(data);
     }
 
     function cancelEdit(callback) {
@@ -62,8 +58,9 @@ const Network = () => {
           setCurrentOperation('Add Node');
           setIdInput(data.id);
           setLabelInput(data.label);
-          document.getElementById('saveButton').onclick = () =>
+          document.getElementById('saveButton').onclick = () => {
             saveData(data, callback);
+          };
           setIsEditing(true);
         },
         editNode(data, callback) {
@@ -71,9 +68,9 @@ const Network = () => {
           setCurrentOperation('Edit Node');
           setIdInput(data.id);
           setLabelInput(data.label);
-          document.getElementById('saveButton').onclick = () =>
+          document.getElementById('saveButton').onclick = () => {
             saveData(data, callback);
-
+          };
           document.getElementById('cancelButton').onclick = () => {
             cancelEdit(callback);
           };
@@ -96,8 +93,8 @@ const Network = () => {
     });
   };
 
-  useEffect(() => loadNetwork());
-
+  useEffect(() => loadNetwork(), [network]);
+  network !== null && network.redraw();
   return (
     <>
       <span>{currentOperation}</span> <br />
