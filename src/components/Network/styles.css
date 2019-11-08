@@ -1,7 +1,34 @@
 #industry-network {
+  position: relative;
   margin: 0 auto 1rem;
-  border: 1px solid #d8d8d8;
-  height: auto;
+  border: 2px solid #D8D8D8;
+  border-radius: 4px;
+  height: 500px;
+}
+
+.vis-manipulation {
+  width: 100%;
+  position: absolute;
+  left: -5px;
+  top: 5px;
+  display: flex !important;
+  justify-content: flex-end;
+}
+
+.vis-manipulation > div {
+  display: inline-block;
+}
+
+.vis-manipulation .vis-button {
+  color: #CCC;
+  background: #222;
+  padding: .5rem 1rem;
+  border-radius: 2px;
+  font-weight: bold;
+}
+
+.vis-manipulation .vis-separator-line {
+  margin: 0 1px;
 }
 
 #operation {
